@@ -1,0 +1,46 @@
+.cardLogin {
+	border-radius: 15px;
+	background-color: #FFFFFF;
+	height: auto;
+	width: 50%;
+	padding: 50px;
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+  	box-shadow: 5px 10px 20px 1px rgb(0,0,0,0.5);
+}
+
+.bg-image {
+	height: 100%;
+	background-image: url(/aulas-neri2/Sistema/view/images/background-login.jpg);
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	filter: blur(8px);
+  	-webkit-filter: blur(8px);
+}
+
+body{
+  height: 100%;
+}
+
+.logo {
+	height: auto;
+	width: 50%;
+}
+
+.profImg{
+	width: 200px;
+	height: auto;
+	margin: 0px 0px 20px 0px;
+}
+
+.conteudo {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	
+}
