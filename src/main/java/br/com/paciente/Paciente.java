@@ -10,6 +10,7 @@ public class Paciente implements Serializable{
 	private String cpf;
 	private Date datanasc;
 	private int id_convenio;
+	private String nomeConvenio;
 	
 	
 	public Paciente() {
@@ -61,6 +62,14 @@ public class Paciente implements Serializable{
 
 	public void setId_convenio(int id_convenio) {
 		this.id_convenio = id_convenio;
+	}
+
+	public String getNomeConvenio() {
+		return nomeConvenio;
+	}
+
+	public void setNomeConvenio(String nomeConvenio) {
+		this.nomeConvenio = nomeConvenio;
 	}
 	
 	

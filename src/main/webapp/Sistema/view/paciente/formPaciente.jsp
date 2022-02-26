@@ -4,7 +4,6 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@include file="/Sistema/includes/jsp/connectionDB.jsp" %>
 <%@include file="/Sistema/includes/jsp/httprequest.jsp"%>
-<%@include file="/Sistema/includes/jsp/valida.jsp" %>
 
 <%	
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -42,8 +41,6 @@
 	}
 	
 %>
-<jsp:useBean class="br.com.paciente.Paciente" id="paciente"></jsp:useBean>
-
 
 <!DOCTYPE html>
 	<html>
