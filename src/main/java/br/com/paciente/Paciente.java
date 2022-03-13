@@ -1,6 +1,8 @@
 package br.com.paciente;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.io.Serializable;
 
 public class Paciente implements Serializable{
@@ -50,6 +52,20 @@ public class Paciente implements Serializable{
 
 	public Date getDatanasc() {
 		return datanasc;
+	}
+	
+	public String getDatanascBR() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		return sdf.format(datanasc);
+	}
+	
+	public void setDatanascDate(String datanasc) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			this.datanasc = (Date) sdf.parse(datanasc);
+		} catch (ParseException e) {
+			throw e;
+		}
 	}
 
 	public void setDatanasc(Date datanasc) {

@@ -2,7 +2,7 @@ package br.com.paciente;
 
 import java.util.List;
 
-public interface pacienteInterface {
+public interface PacienteInterface {
 	
 	public boolean gravarPaciente(Paciente paciente);
 	

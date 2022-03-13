@@ -13,3 +13,11 @@ $(document).ready(function(){
         elemento.prepend(msgElement);
     }
   });
+  
+function alterarPaciente(idPaciente) {
+	 window.location.href = "/SistemaConsultorio/pacienteServlet?idPaciente=" + idPaciente +"&acao=consulta";
+}
+
+function excluirPaciente(idPaciente) {
+	window.location.href = "/SistemaConsultorio/pacienteServlet?idPaciente=" + idPaciente +"&acao=excluir";
+}
