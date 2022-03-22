@@ -16,6 +16,11 @@
                             <i class="fs-4 bi-person-lines-fill"></i><span class="ms-1 d-none d-sm-inline text-white">Paciente</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/SistemaConsultorio/Sistema/view/convenio/listaConvenio.jsp" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi bi-building"></i><span class="ms-1 d-none d-sm-inline text-white">Convênio</span>
+                        </a>
+                    </li>
                 </ul>
                 <hr>
                 <div class="dropdown pb-4">

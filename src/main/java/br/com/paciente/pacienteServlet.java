@@ -16,7 +16,7 @@ public class PacienteServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
-		
+
 		if(req.getParameter("acao") == null) {
 			req.getRequestDispatcher("/Sistema/view/paciente/listaPaciente.jsp").forward(req, resp);
 		} else if(req.getParameter("acao").equals("consulta")) {
@@ -48,7 +48,7 @@ public class PacienteServlet extends HttpServlet {
 			
 			try {
 				excluirPaciente(req);
-				req.setAttribute("msg", "Paciente excluido com sucesso");
+				req.setAttribute("msg", "Paciente excluido	 com sucesso");
 			} catch (Exception e) {
 				req.setAttribute("erro", "ERRO AO EXCLUIR: " + e.getMessage());
 			} finally {
@@ -58,7 +58,7 @@ public class PacienteServlet extends HttpServlet {
 		}
 	}
 	
-	private void gravarPaciente(HttpServletRequest req) throws Exception {
+	private void gravarPaciente(HttpServletRequest req) {
 		Paciente paciente = new Paciente();
 		PacienteDAO pDAO = new PacienteDAO();
 		
@@ -73,7 +73,7 @@ public class PacienteServlet extends HttpServlet {
 		}
 	}
 	
-	private void alterarPaciente(HttpServletRequest req) throws Exception {
+	private void alterarPaciente(HttpServletRequest req) {
 		Paciente paciente = new Paciente();
 		PacienteDAO pDAO = new PacienteDAO();
 		
@@ -89,7 +89,7 @@ public class PacienteServlet extends HttpServlet {
 		}
 	}
 	
-	private void excluirPaciente(HttpServletRequest req) throws Exception {
+	private void excluirPaciente(HttpServletRequest req) {
 		PacienteDAO pDAO = new PacienteDAO();
 		
 		pDAO.excluirPaciente(Integer.parseInt(req.getParameter("idPaciente")));

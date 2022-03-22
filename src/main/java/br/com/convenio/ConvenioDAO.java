@@ -14,22 +14,47 @@ public class ConvenioDAO  implements ConvenioInterface{
 	
 	private Connection connection = new ConexaoDB().getConexao();
 
+	//Cadastrr convenio no banco de dados
 	@Override
 	public void cadastrarConvenio(Convenio convenio) {
-		// TODO Auto-generated method stub
+		try {
+			String sql = "INSERT INTO convenio (nome) VALUES(?)";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, convenio.getNome());
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 		
 	}
-
+	
+	//Alterar as informações do convenio no banco de dados
 	@Override
 	public void alterarConvenio(Convenio convenio) {
-		// TODO Auto-generated method stub
-		
+		try {
+			String sql = "UPDATE convenio SET nome = ? WHERE id_convenio = ?";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, convenio.getNome());
+			ps.setInt(2, convenio.getId_convenio());
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
-
+	
+	//Excluir o convenio do banco de dados pela ID
 	@Override
 	public void excluirConvenio(int id_convenio) {
-		// TODO Auto-generated method stub
-		
+		try {
+			String sql = "DELETE FROM convenio WHERE id_convenio = ?";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, id_convenio);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
@@ -55,8 +80,23 @@ public class ConvenioDAO  implements ConvenioInterface{
 
 	@Override
 	public Convenio consultarConvenio(int id_convenio) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			String sql = "SELECT * FROM convenio WHERE id_convenio = ?";
+			Convenio convenio = new Convenio();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs;
+			ps.setInt(1, id_convenio);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				convenio.setId_convenio(id_convenio);
+				convenio.setNome(rs.getString("nome"));
+			}
+			
+			return convenio;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 }

@@ -5,12 +5,12 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title>Lista de Pacientes</title>
+			<title>Lista de Convenios</title>
 			<%@include file="/Sistema/includes/html/head.jsp" %>
 		</head>
 		<body>
 			<%@include file="/Sistema/includes/html/navBar.jsp" %>
-			<a class="btn btn-success mb-3" href="/SistemaConsultorio/Sistema/view/paciente/formPaciente.jsp"><i class="bi bi-person-plus-fill pe-1"></i>Cadastrar paciente</a>
+			<a class="btn btn-success mb-3" href="/SistemaConsultorio/Sistema/view/convenio/formConvenio.jsp"><i class="bi bi-person-plus-fill pe-1"></i>Cadastrar convênio</a>
 			<c:choose>
 				<c:when test="${msg != null || erro != null }">
 					<c:choose>
@@ -25,34 +25,29 @@
 			</c:choose>
 			<table class="table table-striped table-hover">
 				<tr>
-					<th>CPF</th>
 					<th>Nome</th>
-					<th>Convênio</th>
 					<th>Ação</th>
 				</tr>
-				<jsp:useBean id="pacienteDAO" class="br.com.paciente.PacienteDAO"></jsp:useBean>
-				<c:set var="listaPaciente" value="${pacienteDAO.listarPaciente()}"></c:set>
+				<jsp:useBean id="convenioDAO" class="br.com.convenio.ConvenioDAO"></jsp:useBean>
 				<c:choose>
-					<c:when test="${listaPaciente.isEmpty()}">
+					<c:when test="${convenioDAO.listarConvenio().isEmpty()}">
 						<tr>
-							<td colspan="4" class="align-middle">Nenhum paciente cadastrado</td>
+							<td class="align-middle">Nenhum convenio cadastrado</td>
 						</tr>
 					</c:when>
 					<c:otherwise>
-						<c:forEach items="${pacienteDAO.listarPaciente()}" var="paciente">	
+						<c:forEach items="${convenioDAO.listarConvenio()}" var="convenio">	
 						<tr>
-							<td class="align-middle">${paciente.cpf}</td>
-							<td class="align-middle">${paciente.nome}</td>
-							<td class="align-middle">${paciente.nomeConvenio}</td>
+							<td class="align-middle">${convenio.nome}</td>
 							<td>
 								<div class="dropdown">
   									<button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">Ação</button>
   									<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
     									<li>
-    										<a class="dropdown-item link-primary" onclick="alterarPaciente(${paciente.id_paciente})"><i class="bi bi-pencil"></i>Editar</a>
+    										<a class="dropdown-item link-primary" onclick="alterarConvenio(${convenio.id_convenio})"><i class="bi bi-pencil"></i>Editar</a>
 										</li> 	
     									<li>
-    										<a class="dropdown-item link-danger" onclick="excluirPaciente(${paciente.id_paciente})"><i class="bi bi-trash-fill"></i>Excluir</a>
+    										<a class="dropdown-item link-danger" onclick="excluirConvenio(${paciente.id_convenio})"><i class="bi bi-trash-fill"></i>Excluir</a>
     									</li>
   									</ul>
 								</div>

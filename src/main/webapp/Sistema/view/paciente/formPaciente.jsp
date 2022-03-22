@@ -26,7 +26,7 @@
 						<div class="col">
 							<div class="input-group mb-3">
   								<span class="input-group-text" id="inputGroup-sizing-default">Nome Completo</span>
-  								<input name="nome" type="text" class="form-control" aria-describedby="inputGroup-sizing-default" value="${paciente.nome}">
+  								<input maxlength="100" name="nome" type="text" class="form-control" aria-describedby="inputGroup-sizing-default" value="${paciente.nome}">
 							</div>
 						</div>
 						<div class="col">
@@ -52,7 +52,7 @@
 						<div class="col">
 							<div class="input-group mb-3">
   								<span class="input-group-text" id="inputGroup-sizing-default">CPF</span>
-  								<input id="cpf" name="cpf" maxlength="14" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${paciente.cpf }">
+  								<input id="cpf" name="cpf" type="text" class="form-control" aria-describedby="inputGroup-sizing-default" value="${paciente.cpf }">
 							</div>
 						</div>
 						<div class="col">
