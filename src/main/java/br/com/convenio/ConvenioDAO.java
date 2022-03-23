@@ -5,16 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.conexaoDB.ConexaoDB;
-import br.com.paciente.Paciente;
 
 public class ConvenioDAO  implements ConvenioInterface{
 	
 	private Connection connection = new ConexaoDB().getConexao();
 
-	//Cadastrr convenio no banco de dados
+	//Cadastrar convenio no banco de dados
 	@Override
 	public void cadastrarConvenio(Convenio convenio) {
 		try {
