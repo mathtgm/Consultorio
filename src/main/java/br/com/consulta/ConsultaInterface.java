@@ -13,4 +13,8 @@ public interface ConsultaInterface {
 	public Consulta consultarConsulta(int id_consulta);
 	
 	public ArrayList<Consulta> listaConsulta();
+	
+	public ArrayList<Consulta> listaConsultaMedico(int id_usuario);
+	
+	public ArrayList<Consulta> consultaDiaMedico(int id_usuario);
 }
