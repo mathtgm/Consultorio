@@ -1,6 +1,6 @@
 <% 
 	try {
-		if(session.getAttribute("user") == null) {
+		if(session.getAttribute("nome") == null) {
 %>
 			<jsp:forward page="/Sistema/view/login.jsp" />
 <%
