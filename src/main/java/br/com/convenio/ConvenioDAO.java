@@ -19,6 +19,7 @@ public class ConvenioDAO  implements ConvenioInterface{
 			String sql = "INSERT INTO convenio (nome) VALUES(?)";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, convenio.getNome());
+			
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
@@ -35,6 +36,7 @@ public class ConvenioDAO  implements ConvenioInterface{
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, convenio.getNome());
 			ps.setInt(2, convenio.getId_convenio());
+			
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
@@ -50,6 +52,8 @@ public class ConvenioDAO  implements ConvenioInterface{
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setInt(1, id_convenio);
 			ps.executeUpdate();
+			
+			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -69,6 +73,7 @@ public class ConvenioDAO  implements ConvenioInterface{
 				convenio.setId_convenio(rs.getInt("id_convenio"));
 				listConvenio.add(convenio);
 			}
+			ps.close();
 			return listConvenio;
 			
 		} catch (SQLException e) {
@@ -90,6 +95,7 @@ public class ConvenioDAO  implements ConvenioInterface{
 				convenio.setNome(rs.getString("nome"));
 			}
 			
+			ps.close();
 			return convenio;
 			
 		} catch (SQLException e) {

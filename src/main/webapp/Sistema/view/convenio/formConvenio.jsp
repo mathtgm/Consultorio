@@ -26,7 +26,7 @@
 						<div class="col">
 							<div class="input-group mb-3">
   								<span class="input-group-text" id="inputGroup-sizing-default">Convênio</span>
-  								<input maxlength="50" name="nome" type="text" class="form-control" aria-describedby="inputGroup-sizing-default" value="${convenio.nome}">
+  								<input maxlength="50" name="nome" type="text" class="form-control" value="${convenio.nome}">
 							</div>
 						</div>
 						<div class="row">

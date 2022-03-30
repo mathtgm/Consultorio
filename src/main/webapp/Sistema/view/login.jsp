@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" errorPage="errorPage.jsp" %>
 <%@include file="/Sistema/includes/jsp/httprequest.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,9 +11,12 @@
 	<body>
 		<div class="bg-image"></div>
 		<div class="cardLogin">
-			<h1>Painel do usuário ${name}</h1>
+			<h1>Painel do usuário</h1>
 			<img class="logo" src="/SistemaConsultorio/Sistema/view/images/logo-example.png">
-			<form method="get" name="loginForm" action="/SistemaConsultorio/Sistema/view/login.jsp">
+			<c:if test="${erro != null}">
+				<div class="alert alert-danger">${erro}</div>
+			</c:if>
+			<form method="get" name="loginForm" action="/SistemaConsultorio/funcionarioServlet">
 				<div class="input-group mb-3">
   					<span class="input-group-text" id="inputGroup-sizing-default">Usuário</span>
   					<input name="usuario" type="text" class="form-control">
@@ -23,7 +27,7 @@
   					<input name="senha" type="password" class="form-control">
 				</div>
 				<br>
-				<button name="acessar" type="submit" class="btn btn-primary" value="login">Acessar</button>
+				<button name="acao" type="submit" class="btn btn-primary" value="autenticar">Acessar</button>
 			</form>
 		</div>
 	</body>

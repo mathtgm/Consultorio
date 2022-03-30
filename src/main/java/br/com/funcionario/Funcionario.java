@@ -9,9 +9,10 @@ public class Funcionario implements Serializable {
 	private String nome;
 	private String usuario;
 	private String senha;
-	private String cargo;
+	private String especializacao;
 	private boolean status;
 	private String documento;
+	private int nivel_acesso;
 	
 	public String getDocumento() {
 		return documento;
@@ -19,14 +20,6 @@ public class Funcionario implements Serializable {
 
 	public void setDocumento(String documento) {
 		this.documento = documento;
-	}
-
-	public String getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
 	}
 
 	public boolean isStatus() {
@@ -70,6 +63,22 @@ public class Funcionario implements Serializable {
 
 	public void setId_usuario(int id_usuario) {
 		this.id_usuario = id_usuario;
+	}
+
+	public int getNivel_acesso() {
+		return nivel_acesso;
+	}
+
+	public void setNivel_acesso(int nivel_acesso) {
+		this.nivel_acesso = nivel_acesso;
+	}
+
+	public String getEspecializacao() {
+		return especializacao;
+	}
+
+	public void setEspecializacao(String especializacao) {
+		this.especializacao = especializacao;
 	}
 	
 }
