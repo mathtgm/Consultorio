@@ -1,6 +1,8 @@
 package br.com.consulta;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Consulta {
 	private int id_consulta;
@@ -35,6 +37,16 @@ public class Consulta {
 	
 	public void setDataConsulta(Timestamp dataConsulta) {
 		this.dataConsulta = dataConsulta;
+	}
+	
+	public void converteDataHoraConsulta(String data, String hora) {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		
+		try {
+			this.dataConsulta = (Timestamp) sdf.parse(data + " " + hora);
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public String getStatus() {
