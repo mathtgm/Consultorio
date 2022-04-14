@@ -1,8 +1,11 @@
 package br.com.funcionario;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public interface FuncionarioInterface {
+	
+	public Funcionario setFuncionario(ResultSet rs);
 	
 	public void gravarFuncionario(Funcionario funcionario);
 	
@@ -15,4 +18,6 @@ public interface FuncionarioInterface {
 	public Funcionario autenticaFuncionario(String usuario, String senha);
 	
 	public ArrayList<Funcionario> listarFuncionario();
+	
+	public ArrayList<Funcionario> listarFuncionarioDoutores();
 }

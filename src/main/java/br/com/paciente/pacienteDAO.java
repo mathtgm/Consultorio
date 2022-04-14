@@ -101,7 +101,7 @@ public class PacienteDAO implements PacienteInterface {
 	public Paciente consultarPaciente(int idPaciente) {
 		
 		try {
-			String sql = "SELECT * FROM paciente WHERE id_paciente = ?";
+			String sql = "SELECT p.*, c.nome as nomeConv FROM paciente p INNER JOIN convenio c ON p.id_convenio = c.id_convenio WHERE id_paciente = ?";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setInt(1, idPaciente);
 			ResultSet rs = ps.executeQuery();
@@ -112,6 +112,7 @@ public class PacienteDAO implements PacienteInterface {
 				paciente.setDatanasc(rs.getDate("datanasc"));
 				paciente.setCpf(rs.getString("cpf"));
 				paciente.setId_convenio(rs.getInt("id_convenio"));
+				paciente.setNomeConvenio(rs.getString("nomeConv"));
 				ps.close();
 				return paciente;
 			}

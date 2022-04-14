@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.io.Serializable;
 
 public class Paciente implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	private int id_paciente;
 	private String nome;

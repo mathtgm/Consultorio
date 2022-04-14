@@ -19,16 +19,30 @@ public class ConsultaServlet extends HttpServlet {
 			
 			String acao = req.getParameter("acao");
 			
-			if(acao == "alterar") {
+			if(acao == "gravar") {
 				
+				try {
+					
+				} catch (Exception e) {
+					
+				}
+				
+			} else if(acao == "alterar") {
+				
+				try {
+					
+				} catch (Exception e) {
+				
+				}
 			}
 			
 		}
 		
 	}
 	
-	public void alterarConsulta(HttpServletRequest req) {
-		ConsultaDAO cDAO = new ConsultaDAO();
+	
+	//Funcao que extrai os valores dos parametro no request e define um objeto consulta
+	public Consulta setConsulta(HttpServletRequest req) {
 		Consulta consulta = new Consulta();
 		
 		consulta.setAnotacao(req.getParameter("anotacao"));
@@ -38,12 +52,32 @@ public class ConsultaServlet extends HttpServlet {
 		consulta.setId_paciente(Integer.parseInt(req.getParameter("id_paciente")));
 		consulta.setStatus(req.getParameter("status"));
 		
+		return consulta;
+	}
+	
+	//Funcao para gravar consulta no banco de dados
+	public void alterarConsulta(Consulta consulta) {
+		ConsultaDAO cDAO = new ConsultaDAO();
+
 		cDAO.alterarCosulta(consulta);
 		
 	}
 	
-	public void cadastrarConsulta(HttpServletRequest req) {
+	
+	//Funcao para gravar consulta no banco de dados
+	public void cadastrarConsulta(Consulta consulta) {
+		ConsultaDAO cDAO = new ConsultaDAO();
 		
-	}	
+		cDAO.gravarConsulta(consulta);
+		
+	}
+	
+	//Funcao para excluir uma consulta no banco de dados
+	public void excluirConsulta(int id_consulta) {
+		ConsultaDAO cDAO = new ConsultaDAO();
+		
+		cDAO.excluirConsulta(id_consulta);
+		
+	}
 	
 }

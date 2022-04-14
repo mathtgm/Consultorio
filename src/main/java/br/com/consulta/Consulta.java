@@ -35,6 +35,21 @@ public class Consulta {
 		return dataConsulta;
 	}
 	
+	public String getDataHoraConsultaFormat() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+		return sdf.format(dataCadastro);
+	}
+	
+	public String getDataConsultaFormat() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		return sdf.format(dataCadastro);
+	}
+	
+	public String getTimeConsultaFormat() {
+		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+		return sdf.format(dataCadastro);
+	}
+	
 	public void setDataConsulta(Timestamp dataConsulta) {
 		this.dataConsulta = dataConsulta;
 	}

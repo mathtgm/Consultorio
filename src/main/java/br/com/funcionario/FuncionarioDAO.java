@@ -14,6 +14,29 @@ public class FuncionarioDAO implements FuncionarioInterface {
 	
 	private Connection connection = new ConexaoDB().getConexao();
 	
+	
+	@Override
+	public Funcionario setFuncionario(ResultSet rs) {
+		Funcionario funcionario = new Funcionario();
+		
+		try {
+		
+			funcionario.setEspecializacao(rs.getString("especializacao"));
+			funcionario.setDocumento(rs.getString("documento"));
+			funcionario.setId_usuario(rs.getInt("id_usuario"));
+			funcionario.setUsuario(rs.getString("usuario"));
+			funcionario.setStatus(rs.getBoolean("status"));
+			funcionario.setNivel_acesso(rs.getInt("nivel_acesso"));
+			funcionario.setNome(rs.getString("nome"));
+			funcionario.setSenha(rs.getString("senha"));
+			
+			return funcionario;
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	@Override
 	public void gravarFuncionario(Funcionario funcionario) {
 		try {
@@ -84,16 +107,7 @@ public class FuncionarioDAO implements FuncionarioInterface {
 			rs = ps.executeQuery();			
 			
 			if(rs.next()) {
-				funcionario.setEspecializacao(rs.getString("especializacao"));
-				funcionario.setDocumento(rs.getString("documento"));
-				funcionario.setId_usuario(rs.getInt("id_usuario"));
-				funcionario.setUsuario(rs.getString("usuario"));
-				funcionario.setStatus(rs.getBoolean("status"));
-				funcionario.setNivel_acesso(rs.getInt("nivel_acesso"));
-				funcionario.setNome(rs.getString("nome"));
-				funcionario.setSenha(rs.getString("senha"));
-				
-				funcionario.toString();
+				funcionario = setFuncionario(rs);
 			}
 			
 			ps.close();
@@ -116,13 +130,7 @@ public class FuncionarioDAO implements FuncionarioInterface {
 			
 			rs = ps.executeQuery();
 			 if(rs.next()) {
-				funcionario.setEspecializacao(rs.getString("especializacao"));
-				funcionario.setDocumento(rs.getString("documento"));
-				funcionario.setId_usuario(rs.getInt("id_usuario"));
-				funcionario.setUsuario(rs.getString("usuario"));
-				funcionario.setStatus(rs.getBoolean("status"));
-				funcionario.setNivel_acesso(rs.getInt("nivel_acesso"));
-				funcionario.setNome(rs.getString("nome"));
+				funcionario = setFuncionario(rs);
 			 }
 			 
 			 ps.close();
@@ -143,13 +151,7 @@ public class FuncionarioDAO implements FuncionarioInterface {
 			
 			while(rs.next()) {
 				Funcionario funcionario = new Funcionario();
-				funcionario.setId_usuario(rs.getInt("id_usuario"));
-				funcionario.setDocumento(rs.getString("documento"));
-				funcionario.setEspecializacao(rs.getString("especializacao"));
-				funcionario.setNivel_acesso(rs.getInt("nivel_acesso"));
-				funcionario.setNome(rs.getString("nome"));
-				funcionario.setUsuario(rs.getString("usuario"));
-				funcionario.setStatus(rs.getBoolean("status"));
+				funcionario = setFuncionario(rs);
 				
 				listaFuncionaro.add(funcionario);
 			}
@@ -160,6 +162,30 @@ public class FuncionarioDAO implements FuncionarioInterface {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	@Override
+	public ArrayList<Funcionario> listarFuncionarioDoutores() {
+		String sql = "SELECT * FROM funcionario WHERE nivel_acesso = 1";
+		ArrayList<Funcionario> listaDoutores = new ArrayList<Funcionario>();
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Funcionario funcionario = new Funcionario();
+				funcionario = setFuncionario(rs);
+				
+				listaDoutores.add(funcionario);
+			}
+			
+			ps.close();
+			return listaDoutores;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
 	}
 
 }

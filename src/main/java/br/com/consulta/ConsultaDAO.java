@@ -37,12 +37,11 @@ public class ConsultaDAO implements ConsultaInterface {
 	@Override
 	public void alterarCosulta(Consulta consulta) {
 		try {
-			String sql = "UPDATE consulta SET (datacadastro = ?, dataconsulta = ?, status = ?, id_paciente = ?, id_doutor = ?, anotacao = ? WHERE id_consulta = ?";
+			String sql = "UPDATE consulta SET (datacadastro = ?, dataconsulta = ?, status = ?, id_doutor = ?, anotacao = ? WHERE id_consulta = ?";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setTimestamp(1, consulta.getDataCadastro());
 			ps.setTimestamp(2, consulta.getDataConsulta());
 			ps.setString(3, consulta.getStatus());
-			ps.setInt(4, consulta.getId_paciente());
 			ps.setInt(5, consulta.getId_doutor());
 			ps.setString(6, consulta.getAnotacao());
 			ps.setInt(7, consulta.getId_consulta());
@@ -110,7 +109,7 @@ public class ConsultaDAO implements ConsultaInterface {
 			
 			while(rs.next()) {
 				Consulta consulta = new Consulta();
-				consulta.setId_consulta(rs.getInt("id_cansulta"));
+				consulta.setId_consulta(rs.getInt("id_consulta"));
 				consulta.setId_doutor(rs.getInt("id_doutor"));
 				consulta.setId_paciente(rs.getInt("id_paciente"));
 				consulta.setStatus(rs.getString("status"));
@@ -139,7 +138,6 @@ public class ConsultaDAO implements ConsultaInterface {
 			
 			ps.setInt(1, id_usuario);
 			rs = ps.executeQuery();
-			ps.close();
 			
 			while(rs.next()) {
 				Consulta consulta = new Consulta();
