@@ -27,6 +27,7 @@
 			<jsp:useBean id="DAOfuncionario" class="br.com.funcionario.FuncionarioDAO"></jsp:useBean>
 			<jsp:useBean id="DAOconsulta" class="br.com.consulta.ConsultaDAO"></jsp:useBean>
 			<jsp:useBean id="DAOpaciente" class="br.com.paciente.PacienteDAO"></jsp:useBean>
+			<jsp:useBean id="DAOstatus" class="br.com.status.StatusDAO"></jsp:useBean>
 			
 			
 			<c:forEach var="doutor" begin="0" varStatus="item" items="${DAOfuncionario.listarFuncionarioDoutores()}">
@@ -49,6 +50,7 @@
 									<c:forEach varStatus="indexCol" begin="0" end="2">
 										<c:set value="${indexRow.index+indexCol.index}" var="index"></c:set>
 										<c:set var="consulta" value="${listaConsulta[index]}"></c:set>
+										<c:set var="status" value="${DAOstatus.getStatus(consulta.id_status)}"></c:set>
 										
 											<c:if test="${index < listaConsulta.size()}">
 											
@@ -56,12 +58,12 @@
 												
 												<div class="col-4">
 													<div class="card">
-  														<div class="card-header">${paciente.nome} - Situação: <span class="badge bg-info text-dark">${consulta.status}</span></div>
+  														<div class="card-header">${paciente.nome} - Situação: <span class="badge bg-${status.color} text-dark">${status.status}</span></div>
   														<div class="card-body">
     														<h5 class="card-title">Informações</h5>
     														<p class="card-text">Data da Consulta: ${listaConsulta[index].getDataHoraConsultaFormat()}</p>
     														<p class="card-text">Convenio do paciente: ${paciente.nomeConvenio}</p>
-    														<a href="#" class="btn btn-primary"><i class="bi bi-folder2-open"></i> Acessar</a>
+    														<a onclick="consulta(${consulta.id_consulta})" class="btn btn-primary"><i class="bi bi-folder2-open"></i> Acessar</a>
   														</div>
 													</div>
 												</div>

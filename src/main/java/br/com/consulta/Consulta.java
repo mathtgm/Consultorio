@@ -8,7 +8,7 @@ public class Consulta {
 	private int id_consulta;
 	private Timestamp dataCadastro;
 	private Timestamp dataConsulta;
-	private String status;
+	private int id_status;
 	private int id_paciente;
 	private int id_doutor;
 	private String anotacao;
@@ -37,17 +37,17 @@ public class Consulta {
 	
 	public String getDataHoraConsultaFormat() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-		return sdf.format(dataCadastro);
+		return sdf.format(dataConsulta);
 	}
 	
 	public String getDataConsultaFormat() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		return sdf.format(dataCadastro);
+		return sdf.format(dataConsulta);
 	}
 	
 	public String getTimeConsultaFormat() {
 		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
-		return sdf.format(dataCadastro);
+		return sdf.format(dataConsulta);
 	}
 	
 	public void setDataConsulta(Timestamp dataConsulta) {
@@ -55,23 +55,24 @@ public class Consulta {
 	}
 	
 	public void converteDataHoraConsulta(String data, String hora) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 		
 		try {
-			this.dataConsulta = (Timestamp) sdf.parse(data + " " + hora);
+			Timestamp ts = new Timestamp(sdf.parse(data + " " + hora).getTime());
+			this.dataConsulta = ts;
 		} catch (ParseException e) {
 			throw new RuntimeException(e);
 		}
 	}
 	
-	public String getStatus() {
-		return status;
+	public int getId_status() {
+		return id_status;
 	}
-	
-	public void setStatus(String status) {
-		this.status = status;
+
+	public void setId_status(int id_status) {
+		this.id_status = id_status;
 	}
-	
+
 	public int getId_paciente() {
 		return id_paciente;
 	}

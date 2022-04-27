@@ -22,6 +22,10 @@ function alterarFuncionario(idFuncionario) {
 	window.location.href = "/SistemaConsultorio/funcionarioServlet?id_usuario=" + idFuncionario +"&acao=consultar";
 }
 
+function consulta(idConsulta) {
+	window.location.href = "/SistemaConsultorio/consultaServlet?id_consulta=" + idConsulta +"&acao=consultar";
+}
+
 $(document).ready(function(){
 	
 	mostrarCampoFuncionario();
