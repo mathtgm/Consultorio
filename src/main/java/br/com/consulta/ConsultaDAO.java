@@ -21,7 +21,7 @@ public class ConsultaDAO implements ConsultaInterface {
 			String sql = "INSERT INTO consulta(datacadastro, dataconsulta, id_status, id_paciente, id_doutor) VALUES(now(), ?, ?, ?, ?)";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setTimestamp(1, consulta.getDataConsulta());
-			ps.setString(2, "Agendado");
+			ps.setInt(2, 1);
 			ps.setInt(3, consulta.getId_paciente());
 			ps.setInt(4, consulta.getId_doutor());
 			ps.executeUpdate();

@@ -112,7 +112,7 @@ public class ConsultaServlet extends HttpServlet {
 		consulta.setAnotacao(req.getParameter("anotacao"));
 		consulta.converteDataHoraConsulta(req.getParameter("data"), req.getParameter("hora"));
 		consulta.setId_status(Integer.parseInt(req.getParameter("status")));
-		if(req.getParameter("id_consulta") == null) {
+		if(req.getParameter("id_consulta").isEmpty()) {
 			consulta.setId_doutor(Integer.parseInt(req.getParameter("id_doutor")));
 			consulta.setId_paciente(Integer.parseInt(req.getParameter("id_paciente")));
 		} else {
