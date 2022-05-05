@@ -28,6 +28,10 @@
 			<jsp:useBean id="DAOpaciente" class="br.com.paciente.PacienteDAO"></jsp:useBean>
 			<jsp:useBean id="DAOstatus" class="br.com.status.StatusDAO"></jsp:useBean>
 			
+			<%--
+			Se o usuario for um nivel de acesso igual a 1(um) mostrara so a lista de consulta que pertende ao usuario, caso ao contrario deverar
+			mostrar a lista de todas as consultas separado por doutor(a).
+			 --%>
 			<c:choose>
 				<c:when test="${sessionScope.nivel_acesso == 1}">
 					<c:set var="listaConsulta" value="${DAOconsulta.listaConsultaMedico(sessionScope.id_usuario)}"></c:set>
@@ -112,6 +116,7 @@
 					</c:forEach>				
 				</c:otherwise>
 			</c:choose>
+			<%-- FIM DA LISTA DE CONSULTA --%>
 			
 			<%@include file="/Sistema/includes/html/footer.jsp" %>
 		</body>

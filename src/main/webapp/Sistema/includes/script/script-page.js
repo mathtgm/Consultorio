@@ -35,8 +35,10 @@ $(document).ready(function(){
 	var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   			return new bootstrap.Popover(popoverTriggerEl)
 	})
+	
+})
 
-});
+
 
 function mostrarCampoFuncionario() {
 	
@@ -53,4 +55,9 @@ function mostrarCampoFuncionario() {
 			$(".especializacao").hide();
 		}
 	});
+}
+
+function nextPage(pageIndex) {
+	$("#numbPagina").val(pageIndex-1);
+	$("#formHoje").submit();
 }

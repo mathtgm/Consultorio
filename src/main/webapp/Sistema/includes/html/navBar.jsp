@@ -32,7 +32,8 @@
             						<span class="ms-1 d-none d-sm-inline text-white">Consulta</span>
           						</a>
           						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            						<li><a class="dropdown-item" href="/SistemaConsultorio/Sistema/view/consulta/listaConsulta.jsp">Action</a></li>
+            						<li><a class="dropdown-item" href="/SistemaConsultorio/Sistema/view/consulta/listaConsulta.jsp">Lista de consultas</a></li>
+            						<li><a class="dropdown-item" href="/SistemaConsultorio/Sistema/view/consulta/listaConsultaHoje.jsp">Lista de consultas hoje</a></li>
             					</ul>
             				</li>
 						</ul>

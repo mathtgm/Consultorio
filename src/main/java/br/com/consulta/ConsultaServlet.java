@@ -22,7 +22,11 @@ public class ConsultaServlet extends HttpServlet {
 		
 		if(req.getParameter("acao") != null) {
 			
-			if(req.getParameter("acao").equals("consultar")) {
+			if(req.getParameter("acao").equals("consultasHoje")) {
+				
+				req.setAttribute("numbPagina", req.getParameter("numbPagina"));
+				req.getRequestDispatcher("/Sistema/view/consulta/listaConsultaHoje.jsp").forward(req, resp);				
+			} else if(req.getParameter("acao").equals("consultar")) {
 				
 				try {
 					req.setAttribute("consulta", consultarConsulta(Integer.parseInt(req.getParameter("id_consulta"))));

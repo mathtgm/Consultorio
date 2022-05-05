@@ -14,6 +14,26 @@ public class ConsultaDAO implements ConsultaInterface {
 	
 	private Connection connection = new ConexaoDB().getConexao();
 	
+	
+	@Override
+	public Consulta setConsulta(ResultSet rs) {
+		Consulta consulta = new Consulta();
+		
+		try {
+			consulta.setAnotacao(rs.getString("anotacao"));
+			consulta.setId_consulta(rs.getInt("id_consulta"));
+			consulta.setId_doutor(rs.getInt("id_doutor"));
+			consulta.setId_paciente(rs.getInt("id_paciente"));
+			consulta.setId_status(rs.getInt("id_status"));
+			consulta.setDataCadastro(rs.getTimestamp("datacadastro"));
+			consulta.setDataConsulta(rs.getTimestamp("dataconsulta"));
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return consulta;
+	}
+	
 	//Gravar consulta no banco de dados
 	@Override
 	public void gravarConsulta(Consulta consulta) {
@@ -149,6 +169,32 @@ public class ConsultaDAO implements ConsultaInterface {
 		}
 	}
 	
+	//Extrai todas as consultas do dia
+	@Override
+	public ArrayList<Consulta> consultaDia() {
+
+		try {
+			ArrayList<Consulta> listaConsulta = new ArrayList<Consulta>();
+			Date data = new Date(System.currentTimeMillis());
+			
+			String sql = "SELECT * FROM consulta WHERE dataconsulta BETWEEN '" + data + " 00:00:00.000' AND '" + data + " 23:59:59.000' ORDER BY dataconsulta ASC";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs;
+
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				listaConsulta.add(setConsulta(rs));
+			}
+			
+			ps.close();
+			return listaConsulta;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	//Retorna a lista de consulta do medico no dia
 	@Override
 	public ArrayList<Consulta> consultaDiaMedico(int id_usuario) {
@@ -156,21 +202,17 @@ public class ConsultaDAO implements ConsultaInterface {
 			ArrayList<Consulta> listaConsulta = new ArrayList<Consulta>();
 			Date data = new Date(System.currentTimeMillis());
 			
-			String sql = "SELECT * FROM consulta WHERE id_doutor = ? AND dataconsulta BETWEEN '" + data + " 00:00:00.000' AND '" + data + " 23:59:59.000'";
+			String sql = "SELECT * FROM consulta WHERE id_doutor = ? AND dataconsulta BETWEEN '" + data + " 00:00:00.000' AND '" + data + " 23:59:59.000' ORDER BY dataconsulta ASC";
 			PreparedStatement ps = connection.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
+			ResultSet rs;
+			
+			ps.setInt(1, id_usuario);
+			rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				Consulta consulta = new Consulta();
-				consulta.setAnotacao(rs.getString("anotacao"));
-				consulta.setId_consulta(rs.getInt("id_consulta"));
-				consulta.setId_doutor(rs.getInt("id_doutor"));
-				consulta.setId_paciente(rs.getInt("id_paciente"));
-				consulta.setId_status(rs.getInt("id_status"));
-				consulta.setDataCadastro(rs.getTimestamp("datacadastro"));
-				consulta.setDataConsulta(rs.getTimestamp("dataconsulta"));
 				
-				listaConsulta.add(consulta);
+				listaConsulta.add(setConsulta(rs));
+				
 			}
 				return listaConsulta;
 		} catch (SQLException e) { 

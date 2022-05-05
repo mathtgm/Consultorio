@@ -1,5 +1,6 @@
 package br.com.consulta;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public interface ConsultaInterface {
@@ -17,4 +18,8 @@ public interface ConsultaInterface {
 	public ArrayList<Consulta> listaConsultaMedico(int id_usuario);
 	
 	public ArrayList<Consulta> consultaDiaMedico(int id_usuario);
+	
+	public ArrayList<Consulta> consultaDia();
+	
+	public Consulta setConsulta(ResultSet rs);
 }
