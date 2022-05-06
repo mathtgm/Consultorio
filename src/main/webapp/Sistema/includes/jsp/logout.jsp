@@ -1,7 +1,8 @@
 <%
 	try {
-		session.removeAttribute("user");
-		session.removeAttribute("userName");	
+		session.removeAttribute("nome");
+		session.removeAttribute("nivel_acesso");	
+		session.removeAttribute("id_usuario");
 	} catch (Exception e){
 		System.out.println(e);		
 	} finally {

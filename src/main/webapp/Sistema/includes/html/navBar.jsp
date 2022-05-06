@@ -40,7 +40,6 @@
 								<span class="d-none d-sm-inline mx-1"><%= session.getAttribute("nome") %></span>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-								<li><a class="dropdown-item" href="#">Perfil</a></li>
 								<li><a class="dropdown-item" href="/SistemaConsultorio/Sistema/includes/jsp/logout.jsp">Sair</a></li>
 							</ul>
 						</div>

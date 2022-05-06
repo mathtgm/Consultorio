@@ -47,9 +47,7 @@
 				</thead>
 				<tbody>
 					<c:set var="listaConsulta" value="${DAOConsulta.consultaDia()}"></c:set>
-				
-				
-				
+
 					<c:forEach  varStatus="statusLista" begin="${numbPagina * 10}" end="${(numbPagina + 1) * 10}">
 						<c:if test="${listaConsulta[statusLista.index].id_consulta != null}">
 							<c:set var="paciente" value="${DAOPaciente.consultarPaciente(listaConsulta[statusLista.index].id_paciente)}"></c:set>

@@ -14,7 +14,6 @@ public class ConsultaDAO implements ConsultaInterface {
 	
 	private Connection connection = new ConexaoDB().getConexao();
 	
-	
 	@Override
 	public Consulta setConsulta(ResultSet rs) {
 		Consulta consulta = new Consulta();
