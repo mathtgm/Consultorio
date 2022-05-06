@@ -22,4 +22,6 @@ public interface ConsultaInterface {
 	public ArrayList<Consulta> consultaDia();
 	
 	public Consulta setConsulta(ResultSet rs);
+	
+	public int totalConsultaStatus(int id_status);
 }

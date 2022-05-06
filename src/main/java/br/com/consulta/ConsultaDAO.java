@@ -220,7 +220,29 @@ public class ConsultaDAO implements ConsultaInterface {
 		}
 	}
 	
-	
+	@Override
+	public int totalConsultaStatus(int id_status) {
+		try {
+			Date data = new Date(System.currentTimeMillis());
+			
+			String sql = "SELECT COUNT(id_consulta) FROM consulta WHERE id_status = ? AND dataconsulta BETWEEN '" + data + " 00:00:00.000' AND '" + data + " 23:59:59.000'";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs;
+			
+			ps.setInt(1, id_status);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			
+			return 0;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 	
 	
 	
