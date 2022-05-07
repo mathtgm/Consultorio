@@ -26,7 +26,7 @@
 						<div class="col">
 							<div class="input-group mb-3">
   								<span class="input-group-text" id="inputGroup-sizing-default">Nome Completo</span>
-  								<input maxlength="100" name="nome" type="text" class="form-control" aria-describedby="inputGroup-sizing-default" value="${paciente.nome}">
+  								<input maxlength="50" name="nome" type="text" class="form-control" aria-describedby="inputGroup-sizing-default" value="${paciente.nome}">
 							</div>
 						</div>
 						<div class="col">

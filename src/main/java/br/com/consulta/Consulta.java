@@ -36,7 +36,7 @@ public class Consulta {
 	}
 	
 	public String getDataHoraConsultaFormat() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		return sdf.format(dataConsulta);
 	}
 	
@@ -46,7 +46,7 @@ public class Consulta {
 	}
 	
 	public String getTimeConsultaFormat() {
-		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 		return sdf.format(dataConsulta);
 	}
 	
@@ -55,7 +55,7 @@ public class Consulta {
 	}
 	
 	public void converteDataHoraConsulta(String data, String hora) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
 		try {
 			Timestamp ts = new Timestamp(sdf.parse(data + " " + hora).getTime());

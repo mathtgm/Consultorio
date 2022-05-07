@@ -13,7 +13,7 @@ import br.com.conexaoDB.ConexaoDB;
 public class ConsultaDAO implements ConsultaInterface {
 	
 	private Connection connection = new ConexaoDB().getConexao();
-	
+
 	@Override
 	public Consulta setConsulta(ResultSet rs) {
 		Consulta consulta = new Consulta();
@@ -44,6 +44,7 @@ public class ConsultaDAO implements ConsultaInterface {
 			ps.setInt(3, consulta.getId_paciente());
 			ps.setInt(4, consulta.getId_doutor());
 			ps.executeUpdate();
+			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -61,6 +62,7 @@ public class ConsultaDAO implements ConsultaInterface {
 			ps.setInt(4, consulta.getId_consulta());
 
 			ps.executeUpdate();
+			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -75,6 +77,7 @@ public class ConsultaDAO implements ConsultaInterface {
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setInt(1, id_consulta);
 			ps.executeUpdate();
+			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -102,7 +105,7 @@ public class ConsultaDAO implements ConsultaInterface {
 				consulta.setDataConsulta(rs.getTimestamp("dataconsulta"));
 				consulta.setDataCadastro(rs.getTimestamp("datacadastro"));
 			}
-			
+			ps.close();
 			return consulta;
 			
 		} catch (SQLException e) {
@@ -130,6 +133,7 @@ public class ConsultaDAO implements ConsultaInterface {
 				consulta.setDataCadastro(rs.getTimestamp("datacadastro"));
 				listaConsulta.add(consulta);
 			}
+			ps.close();
 			return listaConsulta;
 			
 		} catch (SQLException e) {
@@ -161,7 +165,7 @@ public class ConsultaDAO implements ConsultaInterface {
 				consulta.setDataConsulta(rs.getTimestamp("dataconsulta"));
 				listaConsulta.add(consulta);
 			}
-			
+			ps.close();
 			return listaConsulta;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -213,6 +217,7 @@ public class ConsultaDAO implements ConsultaInterface {
 				listaConsulta.add(setConsulta(rs));
 				
 			}
+				ps.close();
 				return listaConsulta;
 		} catch (SQLException e) { 
 			throw new RuntimeException(e);
@@ -236,6 +241,7 @@ public class ConsultaDAO implements ConsultaInterface {
 				return rs.getInt(1);
 			}
 			
+			ps.close();
 			return 0;
 			
 		} catch (SQLException e) {

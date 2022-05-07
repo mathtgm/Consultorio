@@ -47,6 +47,7 @@ public class PacienteDAO implements PacienteInterface {
 				ps.close();
 				return true;
 			} else
+				ps.close();
 				return false;
 			
 		} catch (SQLException e) {
@@ -67,6 +68,7 @@ public class PacienteDAO implements PacienteInterface {
 				ps.close();
 				return true;
 			} else
+				ps.close();
 				return false;
 			
 		} catch (SQLException e) {

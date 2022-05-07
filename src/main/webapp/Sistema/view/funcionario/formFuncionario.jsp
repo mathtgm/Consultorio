@@ -26,20 +26,20 @@
 				<div class="col">
 					<div class="input-group mb-3">
   						<span class="input-group-text">Nome</span>
-  						<input name="nome" type="text" class="form-control" value="${funcionario.nome}">
+  						<input name="nome" type="text" class="form-control" maxlength="30" value="${funcionario.nome}">
 					</div>
 				</div>
 				<div class="col">
 					<div class="input-group mb-3">
 						<label class="form-check-label me-2">Ativo?</label>
   						<div class="form-check form-check-inline">
-  							<input class="form-check-input nivel_acesso" type="radio" name="status" value="true" ${funcionario.status ? "checked" : "" }>
+  							<input class="form-check-input" type="radio" name="status" value="true" ${funcionario.status ? "checked" : "" }>
   							<label class="form-check-label">
     							Sim
   							</label>
 						</div>
 						<div class="form-check form-check-inline">
-  							<input class="form-check-input nivel_acesso" type="radio" name="status" value="false" ${funcionario.status ? "" : "checked" }>
+  							<input class="form-check-input" type="radio" name="status" value="false" ${funcionario.status ? "" : "checked" }>
   							<label class="form-check-label">
     							Não
   							</label>
@@ -51,26 +51,26 @@
 				<div class="col">
 					<div class="input-group mb-3">
   						<span class="input-group-text">Usuário</span>
-  						<input name="usuario" type="text" class="form-control" value="${funcionario.usuario}">
+  						<input name="usuario" type="text" class="form-control" maxlength="15" value="${funcionario.usuario}">
 					</div>
 				</div>
 				<div class="col">
 					<div class="input-group mb-3">
   						<span class="input-group-text">Senha</span>
-  						<input name="senha" type="password" class="form-control" value="${funcionario.senha }">
+  						<input name="senha" type="password" class="form-control" maxlength="16" value="${funcionario.senha }">
 					</div>
 				</div>
 				<div class="col">
 					<div class="form-group mb-3">
 						<label class="form-check-label me-2">Nível de acesso</label>
   						<div class="form-check form-check-inline">
-  							<input class="form-check-input nivel_acesso" type="radio" name="nivel_acesso" value="1" ${funcionario.nivel_acesso == 1 ? "checked" : "" }>
+  							<input class="form-check-input nivel_acesso" onclick="mostrarCampoFuncionario()" type="radio" name="nivel_acesso" value="1" ${funcionario.nivel_acesso == 1 ? "checked" : "" }>
   							<label class="form-check-label">
     							Doutor(a)
   							</label>
 						</div>
 						<div class="form-check form-check-inline">
-  							<input class="form-check-input nivel_acesso" type="radio" name="nivel_acesso" value="2" ${funcionario.nivel_acesso != 1 ? "checked" : "" }>
+  							<input class="form-check-input nivel_acesso" onclick="mostrarCampoFuncionario()" type="radio" name="nivel_acesso" value="2" ${funcionario.nivel_acesso != 1 ? "checked" : "" }>
   							<label class="form-check-label">
     							Secretaria
   							</label>

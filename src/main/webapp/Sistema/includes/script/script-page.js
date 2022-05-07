@@ -47,14 +47,6 @@ function mostrarCampoFuncionario() {
 	} else {
 		$(".especializacao").hide();
 	}
-	
-	$(".nivel_acesso").click(function(){
-		if (this.value == 1) {
-			$(".especializacao").show();
-		} else {
-			$(".especializacao").hide();
-		}
-	});
 }
 
 function nextPage(pageIndex) {

@@ -75,6 +75,7 @@ public class FuncionarioDAO implements FuncionarioInterface {
 			ps.setInt(8, funcionario.getId_usuario());
 			
 			ps.executeUpdate();
+			ps.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -166,7 +167,7 @@ public class FuncionarioDAO implements FuncionarioInterface {
 	
 	@Override
 	public ArrayList<Funcionario> listarFuncionarioDoutores() {
-		String sql = "SELECT * FROM funcionario WHERE nivel_acesso = 1";
+		String sql = "SELECT * FROM funcionario WHERE nivel_acesso = 1 AND nome <> 'Admin'";
 		ArrayList<Funcionario> listaDoutores = new ArrayList<Funcionario>();
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);
